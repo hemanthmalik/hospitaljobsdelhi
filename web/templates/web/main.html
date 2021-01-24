@@ -1,0 +1,34 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <title>Hospital Jobs in Delhi | {% block title %}Welcome{% endblock %}</title>
+        <link rel="shortcut icon" href="{% static 'web/images/fav.png' %}" />
+        <link
+            rel="stylesheet"
+            href="{% static 'web/css/bootstrap.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'web/css/fontawsom-all.min.css' %}"
+        />
+        <link rel="stylesheet" href="{% static 'web/css/animate.css' %}" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'web/css/style.css' %}"
+        />
+    </head>
+
+    <body>
+        {% include 'web/header.html' %}
+        {% block content %}{% endblock %}
+        {% include 'web/footer.html' %}
+        {% block otherscripts %}{% endblock %}
+    </body>
+</html>
