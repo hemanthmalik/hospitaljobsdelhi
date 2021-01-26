@@ -7,7 +7,9 @@
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <title>Hospital Jobs in Delhi | {% block title %}Welcome{% endblock %}</title>
+        <title>
+            Hospital Jobs in Delhi | {% block title %}Welcome{% endblock %}
+        </title>
         <link rel="shortcut icon" href="{% static 'web/images/fav.png' %}" />
         <link
             rel="stylesheet"
@@ -28,7 +30,7 @@
     <body>
         {% include 'web/header.html' %}
         {% block content %}{% endblock %}
-        {% include 'web/footer.html' %}
+        {%include 'web/footer.html' %}
         {% block otherscripts %}{% endblock %}
     </body>
 </html>

@@ -4,7 +4,7 @@ from . import forms
 
 # Create your views here.
 def home(request):
-    return render(request, 'web/home.html', {'myform': forms.ContactForm()})
+    return render(request, 'web/home.html')
 
 def about(request):
     return render(request, 'web/about_us.html')
@@ -24,9 +24,12 @@ def contact(request):
 def register(request):
     if request.method=="POST":
         print(request.POST)
-    return render(request, 'web/register.html')
+        print(request.FILES)
+        f = forms.JobSeekerForm(request.POST, request.FILES)
+        f.save()
+    return render(request, 'web/register.html', {'job_form': forms.JobSeekerForm()})
 
 def recruit(request):
     if request.method=="POST":
         print(request.POST)
-    return render(request, 'web/recruit.html', {'job_form': forms.JobSeekerForm})
+    return render(request, 'web/recruit.html', {'posting_form': forms.JobPostingForm()})
