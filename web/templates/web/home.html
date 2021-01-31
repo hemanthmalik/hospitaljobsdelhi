@@ -1,10 +1,41 @@
 {% extends 'web/main.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
+    {% block page_wrapper %}
+        {% with current_page=current_page %}
+            {{ block.super }}
+        {% endwith%}
+    {% endblock page_wrapper%}
     {% include 'web/slider.html' %}
     {% include 'web/key_features.html' %}
     {% include 'web/with_medical.html' %}
     {% include 'web/our_departments.html' %}
     {% include 'web/our_blogs.html' %}
-    <!-- {% include 'web/cardslider.html' %} -->
+    {% include 'web/cardslider.html' with registrations=registrations %}
+{% endblock %}
+
+{% block otherscripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <script>
+        var slider = tns({
+        container: '.my-slider',
+        items: 1,
+        "mouseDrag": true,
+        "swipeAngle": false,
+        "speed": 400,
+        loop: true,
+        responsive: {
+            640: {
+            gutter: 20,
+            items: 3
+            },
+            700: {
+            gutter: 30
+            },
+            900: {
+            items: 5
+            }
+        }
+        });
+    </script>
 {% endblock %}

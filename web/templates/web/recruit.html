@@ -3,7 +3,7 @@
 <div class="col-sm-5 order-first pt-5">
     <form class="form-data" method="POST" action="{% url 'web:register' %}">
         {% csrf_token %}
-        <div class="form-head">
+        <div class="form-head pt-3">
             <h2>Submit Job Requirement</h2>
         </div>
         <div class="form-body">
@@ -16,7 +16,9 @@
                 </div>
             </div>
             <div class="row form-row">
-                {{posting_form.organization_name}}
+                <div class="col-12 px-sm-0">
+                    {{posting_form.organization_name}}
+                </div>
             </div>
             <div class="row form-row">
                 <div class="col-sm-7 pl-sm-0">
@@ -27,7 +29,9 @@
                 </div>
             </div>
             <div class="row form-row">
-                {{posting_form.required_qualification}}
+                <div class="col-12 px-sm-0">
+                    {{posting_form.required_qualification}}
+                </div>
             </div>
             <div class="row form-row">
                 <div class="col-sm-6 pl-sm-0">

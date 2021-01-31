@@ -25,12 +25,15 @@
             type="text/css"
             href="{% static 'web/css/style.css' %}"
         />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
     </head>
 
     <body>
-        {% include 'web/header.html' %}
+        {% block page_wrapper %}
+            {% include 'web/header.html' with current_page=current_page %}
+        {% endblock page_wrapper%}
         {% block content %}{% endblock %}
-        {%include 'web/footer.html' %}
+        {% include 'web/footer.html' %}
         {% block otherscripts %}{% endblock %}
     </body>
 </html>
