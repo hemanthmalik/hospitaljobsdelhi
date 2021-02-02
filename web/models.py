@@ -1,5 +1,7 @@
 from django.db import models
-
+from django.utils.safestring import mark_safe
+from django.utils.html import format_html
+from django.urls import reverse
 # Create your models here.
 
 GENDER_CHOICES = [
@@ -21,6 +23,14 @@ class JobSeeker(models.Model):
     current_organization = models.CharField(max_length=50, blank=True)
     expected_salary = models.IntegerField(blank=True, null=True)
     resume = models.FileField(upload_to="uploads/", blank=True, null=True)
+    
+    def file_link(self):
+        if self.resume:
+            return format_html(f"<a href='{reverse('web:get_resume', kwargs={'jid':self.id})}'>download</a>")
+        else:
+            return "No attachment"
+
+    file_link.allow_tags = True
 
 
 class JobPosting(models.Model):

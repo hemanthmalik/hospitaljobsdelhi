@@ -1,19 +1,4 @@
-<style>
-    .tns-nav {
-        display: none;
-    }
-    .tns-controls button + button {
-        float: right;
-        position: absolute;
-        right: 0px;
-        z-index: 999;
-    }
-    .tns-controls button {
-        float: left;
-        position: absolute;
-        z-index: 999;
-    }
-</style>
+{% load web_extras %}
 <div class="container-fluid">
     <h2 class="text-center pt-3">Recent Registrations</h2>
     <hr />
@@ -42,11 +27,17 @@
                     </tr> -->
                         <tr>
                             <td class="pr-1 text-muted">Contact No.</td>
-                            <td>{{jobseeker.phone}}</td>
+                            <td>{{ jobseeker.phone|slice:":2" }}XXXXXXXX{{ jobseeker.phone|slice:"8:" }}</td>
                         </tr>
                         <tr>
                             <td class="pr-1 text-muted">Email</td>
-                            <td>{{jobseeker.email}}</td>
+                            <td>
+                                {% with jobseeker.email|split:"@" as eparts %}
+                                    {{ eparts.0|slice:":1" }}{% for i in eparts.0|slice:"1:" %}X{% endfor %}{{eparts.1}}
+                                {% endwith %}
+
+                            </td>
+                            <!-- <td>{{jobseeker.email|slice:":2"}}{% for x in jobseeker.email|slice:"4:" %}X{% endfor %}</td> -->
                         </tr>
                         <tr>
                             <td class="pr-1 text-muted">Gender</td>

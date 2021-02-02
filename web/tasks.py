@@ -10,5 +10,6 @@ def send_custom_mail(data):
         reply_to=['hemantmalik121@gmail.com'],
         headers={'Message-ID': 'foo'},
     )
-    email.attach_file(data.resume.path)
+    if data.resume:
+        email.attach_file(data.resume.path)
     email.send()

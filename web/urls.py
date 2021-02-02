@@ -11,5 +11,6 @@ urlpatterns = [
     path('gallery/', views.gallery, name='gallery'),
     path('contact/', views.contact, name='contact'),
     path('register/', views.register, name='register'),
-    path('recruit/', views.recruit, name="recruit")
+    path('recruit/', views.recruit, name="recruit"),
+    path('<int:jid>/get_resume/', views.get_resume, name="get_resume")
 ]

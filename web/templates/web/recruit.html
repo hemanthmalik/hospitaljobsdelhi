@@ -1,7 +1,7 @@
 {% extends 'web/form-main.html' %}
 {% block myform %}
 <div class="col-sm-5 order-first pt-5">
-    <form class="form-data" method="POST" action="{% url 'web:register' %}">
+    <form class="form-data" method="POST" action="{% url 'web:recruit' %}">
         {% csrf_token %}
         <div class="form-head pt-3">
             <h2>Submit Job Requirement</h2>
