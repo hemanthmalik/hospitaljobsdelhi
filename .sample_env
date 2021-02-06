@@ -1,9 +1,9 @@
-DEBUG=true
-SECRET_KEY=slkdjfaskjfsdlkfasdlfkjalfk^xyu5h(yzw
-DB_NAME=hjd
-DB_USER=postgres
-DB_PASS=root
+SECRET_KEY=fksdalfsalkfjasklfjaslfjkasf
+DEBUG=True
+DB_NAME=test
+DB_USER=test
+DB_PASS=test@1234
 DB_HOST=localhost
 DB_PORT=
-EMAIL_ID=example@gmail.com
-EMAIL_PASS=sdkfljasflkaj
+EMAIL_ID=test@gmail.com
+EMAIL_PASS=test
