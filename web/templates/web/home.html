@@ -1,15 +1,47 @@
 {% extends 'web/main.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
+    {% block page_wrapper %}
+        {% with current_page=current_page %}
+            {{ block.super }}
+        {% endwith%}
+    {% endblock page_wrapper%}
     {% include 'web/slider.html' %}
     {% include 'web/key_features.html' %}
     {% include 'web/with_medical.html' %}
     {% include 'web/our_departments.html' %}
     {% include 'web/our_blogs.html' %}
-    <!-- {{myform.sollicitanten}}
-    {{myform.vacature_contract}}
+    {% include 'web/cardslider.html' with registrations=registrations %}
+{% endblock %}
+
+{% block otherscripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
     <script>
-        let myDropdown = document.getElementById('id_sollicitanten');
-        myDropdown.onchange = () => document.getElementById('id_vacature_contract').value = myDropdown.value;
-    </script> -->
+        var slider = tns({
+        container: '.my-slider',
+        items: 1,
+        "mouseDrag": true,
+        "swipeAngle": false,
+        autoplay: true,
+        "speed": 1000,
+        // nav:false,
+        controls:false,
+        nav: false,
+        touch: true,
+        loop: true,
+        autoplayButtonOutput: false,
+        responsive: {
+            640: {
+            gutter: 20,
+            items: 3
+            },
+            700: {
+            gutter: 30
+            },
+            900: {
+            items: 5
+            }
+        }
+        });
+    </script>
 {% endblock %}

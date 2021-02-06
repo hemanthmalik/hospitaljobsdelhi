@@ -1,0 +1,5 @@
+<form method="POST" action="{% url 'web:testform' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.file_document}}
+    <input type="submit" value="send"/>
+</form>

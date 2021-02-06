@@ -1,37 +1,63 @@
 {% extends 'web/form-main.html' %}
 {% block myform %}
 <div class="col-sm-5">
-    <form class="form-data" method="POST" action="{% url 'web:register' %}">
+    <form class="form-data" enctype="multipart/form-data" method="POST" action="{% url 'web:register' %}">
         {% csrf_token %}
         <div class="form-head">
             <h2>Register Now</h2>
         </div>
         <div class="form-body">
             <div class="row form-row">
-                <input
-                    type="text"
-                    placeholder="Enter Full name"
-                    name="name"
-                    class="form-control"
-                />
+                <div class="col-sm-6 pl-sm-0">
+                    {{job_form.first_name}}
+                </div>
+                <div class="col-sm-6 pr-sm-0">
+                    {{job_form.last_name}}
+                </div>
             </div>
             <div class="row form-row">
-                <input
-                    type="text"
-                    placeholder="Enter Mobile Number"
-                    class="form-control"
-                    name="mobile"
-                />
+                <div class="col-12 px-sm-0">
+                    {{job_form.email}}
+                </div>
             </div>
             <div class="row form-row">
-                <input
-                    type="text"
-                    placeholder="Enter Email Adreess"
-                    class="form-control"
-                    name="email"
-                />
+                <div class="col-sm-7 pl-sm-0">
+                    {{job_form.phone}}
+                </div>
+                <div class="col-sm-5 pr-sm-0">
+                    {{job_form.gender}}
+                </div>
             </div>
             <div class="row form-row">
+                <div class="col-12 px-sm-0">
+                    {{job_form.qualification}}
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-12 px-sm-0">
+                    {{job_form.speciality}}
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-sm-6 pl-sm-0">
+                    {{job_form.experience}}
+                </div>
+                <div class="col-sm-6 pr-sm-0">
+                    {{job_form.expected_salary}}
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-sm-6 pr-sm-0">
+                    {{job_form.current_company}}
+                </div>
+            </div>
+            <h6 class="text-right">Upload Resume</h6>
+            <div class="row form-row">
+                <div class="col-12 px-sm-0">
+                    {{job_form.resume}}
+                </div>
+            </div>
+            <!-- <div class="row form-row">
                 <input
                     id="dat"
                     type="text"
@@ -39,44 +65,7 @@
                     class="form-control"
                     name="date"
                 />
-            </div>
-
-            <h6>Address Details</h6>
-
-            <div class="row form-row">
-                <div class="col-sm-6">
-                    <input
-                        type="text"
-                        placeholder="Enter Area"
-                        class="form-control"
-                        name="area"
-                    />
-                </div>
-                <div class="col-sm-6">
-                    <input
-                        type="text"
-                        placeholder="Enter City"
-                        class="form-control"
-                    />
-                </div>
-            </div>
-            <div class="row form-row">
-                <div class="col-sm-6">
-                    <input
-                        type="text"
-                        placeholder="Enter State"
-                        class="form-control"
-                    />
-                </div>
-                <div class="col-sm-6">
-                    <input
-                        type="text"
-                        placeholder="Postal Code"
-                        class="form-control"
-                    />
-                </div>
-            </div>
-
+            </div> -->
             <div class="row form-row">
                 <button class="btn btn-success btn-appointment">
                     Register

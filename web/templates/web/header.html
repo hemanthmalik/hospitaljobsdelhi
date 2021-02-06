@@ -11,7 +11,7 @@
                             hospitaljobsdelhi@gmail.com
                         </li>
                         <li>
-                            <i class="fas fa-phone-square"></i> +123 987 887 765
+                            <i class="fas fa-phone-square"></i> +91-9718706679
                         </li>
                     </ul>
                 </div>
@@ -41,7 +41,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
-                    <a href="{% url 'web:home' %}"><img src="{% static 'web/images/logo.png' %}" alt="" /></a>
+                    <a href="{% url 'web:home' %}"
+                        ><img src="{% static 'web/images/logo.png' %}" alt=""
+                    /></a>
                     <a data-toggle="collapse" data-target="#menu" href="#menu"
                         ><i class="fas d-block d-md-none small-menu fa-bars"></i
                     ></a>
@@ -56,11 +58,38 @@
                         <li><a href='{% url "web:services" %}'>Services</a></li>
                         <li><a href="{% url 'web:blog' %}">Blog</a></li>
                         <li><a href="{% url 'web:gallery' %}">Gallery</a></li>
-                        <li><a href="{% url 'web:contact' %}">Contact Us</a></li>
+                        <li>
+                            <a href="{% url 'web:contact' %}">Contact Us</a>
+                        </li>
+                        <li>
+                            <div class="d-block d-lg-none appoint">
+                                {% if current_page == "register" %}
+                                <a
+                                    href="{% url 'web:recruit' %}"
+                                    class="btn btn-info"
+                                    >Post a job opening</a
+                                >
+                                {% else %}
+                                <a
+                                    href="{% url 'web:register' %}"
+                                    class="btn btn-info"
+                                    >Register for free</a
+                                >
+                                {% endif %}
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-sm-2 d-none d-lg-block appoint">
-                    <a href="{% url 'web:register' %}" class="btn btn-info">Register for free</a>
+                    {% if current_page == "register" %}
+                    <a href="{% url 'web:recruit' %}" class="btn btn-info"
+                        >Post a job opening</a
+                    >
+                    {% else %}
+                    <a href="{% url 'web:register' %}" class="btn btn-info"
+                        >Register for free</a
+                    >
+                    {% endif %}
                 </div>
             </div>
         </div>

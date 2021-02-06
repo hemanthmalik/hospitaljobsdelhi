@@ -7,7 +7,9 @@
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <title>Hospital Jobs in Delhi | {% block title %}Welcome{% endblock %}</title>
+        <title>
+            Hospital Jobs in Delhi | {% block title %}Welcome{% endblock %}
+        </title>
         <link rel="shortcut icon" href="{% static 'web/images/fav.png' %}" />
         <link
             rel="stylesheet"
@@ -23,10 +25,13 @@
             type="text/css"
             href="{% static 'web/css/style.css' %}"
         />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
     </head>
 
     <body>
-        {% include 'web/header.html' %}
+        {% block page_wrapper %}
+            {% include 'web/header.html' with current_page=current_page %}
+        {% endblock page_wrapper%}
         {% block content %}{% endblock %}
         {% include 'web/footer.html' %}
         {% block otherscripts %}{% endblock %}

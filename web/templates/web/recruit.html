@@ -1,77 +1,46 @@
 {% extends 'web/form-main.html' %}
 {% block myform %}
 <div class="col-sm-5 order-first pt-5">
-    <form class="form-data" method="POST" action="{% url 'web:register' %}">
+    <form class="form-data" method="POST" action="{% url 'web:recruit' %}">
         {% csrf_token %}
-        <div class="form-head">
-            <h2>Provide Job Details</h2>
+        <div class="form-head pt-3">
+            <h2>Submit Job Requirement</h2>
         </div>
         <div class="form-body">
             <div class="row form-row">
-                <!-- <input
-                    type="text"
-                    placeholder="Enter Full name"
-                    name="name"
-                    class="form-control"
-                /> -->{{job_form.first_name}}
-            </div>
-            <div class="row form-row">
-                {{job_form.last_name}}
-            </div>
-            <div class="row form-row">
-                <input
-                    type="text"
-                    placeholder="Enter Email Adreess"
-                    class="form-control"
-                    name="email"
-                />
-            </div>
-            <div class="row form-row">
-                <input
-                    id="dat"
-                    type="text"
-                    placeholder="Appointment Date"
-                    class="form-control"
-                    name="date"
-                />
-            </div>
-
-            <h6>Address Details</h6>
-
-            <div class="row form-row">
-                <div class="col-sm-6">
-                    <input
-                        type="text"
-                        placeholder="Enter Area"
-                        class="form-control"
-                        name="area"
-                    />
+                <div class="col-sm-6 pl-sm-0">
+                    {{posting_form.first_name}}
                 </div>
-                <div class="col-sm-6">
-                    <input
-                        type="text"
-                        placeholder="Enter City"
-                        class="form-control"
-                    />
+                <div class="col-sm-6 pr-sm-0">
+                    {{posting_form.last_name}}
                 </div>
             </div>
             <div class="row form-row">
-                <div class="col-sm-6">
-                    <input
-                        type="text"
-                        placeholder="Enter State"
-                        class="form-control"
-                    />
-                </div>
-                <div class="col-sm-6">
-                    <input
-                        type="text"
-                        placeholder="Postal Code"
-                        class="form-control"
-                    />
+                <div class="col-12 px-sm-0">
+                    {{posting_form.organization_name}}
                 </div>
             </div>
-
+            <div class="row form-row">
+                <div class="col-sm-7 pl-sm-0">
+                    {{posting_form.contact_email}}
+                </div>
+                <div class="col-sm-5 pr-sm-0">
+                    {{posting_form.contact_no}}
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-12 px-sm-0">
+                    {{posting_form.required_qualification}}
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-sm-6 pl-sm-0">
+                    {{posting_form.required_experience}}
+                </div>
+                <div class="col-sm-6 pr-sm-0">
+                    {{posting_form.salary_offering}}
+                </div>
+            </div>
             <div class="row form-row">
                 <button class="btn btn-success btn-appointment">
                     Post Requirement

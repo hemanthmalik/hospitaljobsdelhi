@@ -1,0 +1,65 @@
+{% load web_extras %}
+<div class="container-fluid">
+    <h2 class="text-center pt-3">Recent Registrations</h2>
+    <hr />
+    <div class="my-slider">
+        {% for jobseeker in registrations %}
+        <div class="p-1">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header mx-2 mt-2 bg-primary">
+                    <h4 class="my-0 text-white fw-normal">
+                        {{jobseeker.speciality}}
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">
+                        {{jobseeker.first_name}}
+                        <small class="text-muted">
+                            {{jobseeker.last_name}}</small
+                        >
+                    </h1>
+                    <table class="table">
+                        <!-- <tr>
+                        <td class="pr-1 text-muted">Name</td>
+                        <td>
+                            {{jobseeker.first_name}} {{jobseeker.last_name}}
+                        </td>
+                    </tr> -->
+                        <tr>
+                            <td class="pr-1 text-muted">Contact No.</td>
+                            <td>{{ jobseeker.phone|slice:":2" }}XXXXXXXX{{ jobseeker.phone|slice:"8:" }}</td>
+                        </tr>
+                        <tr>
+                            <td class="pr-1 text-muted">Email</td>
+                            <td>
+                                {% with jobseeker.email|split:"@" as eparts %}
+                                    {{ eparts.0|slice:":1" }}{% for i in eparts.0|slice:"1:" %}X{% endfor %}{{eparts.1}}
+                                {% endwith %}
+
+                            </td>
+                            <!-- <td>{{jobseeker.email|slice:":2"}}{% for x in jobseeker.email|slice:"4:" %}X{% endfor %}</td> -->
+                        </tr>
+                        <tr>
+                            <td class="pr-1 text-muted">Gender</td>
+                            <td class="text-capitalize">
+                                {{jobseeker.gender}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pr-1 text-muted">Qualification</td>
+                            <td>{{jobseeker.qualification}}</td>
+                        </tr>
+                        <tr>
+                            <td class="pr-1 text-muted">Experience</td>
+                            <td>{{jobseeker.experience}}</td>
+                        </tr>
+                    </table>
+                    <button type="button" class="w-100 btn btn-lg btn-primary">
+                        Contact Now
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
