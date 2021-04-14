@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.safestring import mark_safe
 from django.utils.html import format_html
 from django.urls import reverse
+from django.utils import timezone
 # Create your models here.
 
 GENDER_CHOICES = [
@@ -23,6 +24,7 @@ class JobSeeker(models.Model):
     current_organization = models.CharField(max_length=50, blank=True)
     expected_salary = models.IntegerField(blank=True, null=True)
     resume = models.FileField(upload_to="uploads/", blank=True, null=True)
+    applied_at = models.DateTimeField(default=timezone.now)
     
     def file_link(self):
         if self.resume:
@@ -42,3 +44,4 @@ class JobPosting(models.Model):
     required_qualification = models.TextField(max_length=50, blank=True)
     required_experience = models.CharField(max_length=50, blank=True)
     salary_offering = models.CharField(max_length=20, blank=True)
+    posted_at = models.DateTimeField(default=timezone.now)

@@ -6,7 +6,7 @@ from .models import JobSeeker, JobPosting
 class JobSeekerForm(ModelForm):
     class Meta:
         model = JobSeeker
-        exclude = set()
+        exclude = ('applied_at',)
         # widgets = {
         #     'name': Textarea(attrs={'cols': 80, 'rows': 20}),
         # }
@@ -22,7 +22,7 @@ class JobSeekerForm(ModelForm):
 class JobPostingForm(ModelForm):
     class Meta:
         model = JobPosting
-        exclude = set()
+        exclude = ('posted_at',)
         # widgets = {
         #     'name': Textarea(attrs={'cols': 80, 'rows': 20}),
         # }

@@ -4,26 +4,21 @@ import mimetypes
 from . import forms
 from . import models
 from . import tasks
+from django.views.generic import ListView
 
 # Create your views here.
-def home(request):
-    registrations = models.JobSeeker.objects.all()[:10]
-    return render(request, 'web/home.html', {'registrations': registrations})
+class HomeView(ListView):
+    model = models.JobSeeker
+    context_object_name = 'registrations'
+    template_name = 'web/home.html'
 
-def about(request):
-    return render(request, 'web/about_us.html')
-
-def services(request):
-    return render(request, 'web/services.html')
-
-def blog(request):
-    return render(request, 'web/blog.html')
-
-def gallery(request):
-    return render(request, 'web/gallery.html')
-
-def contact(request):
-    return render(request, 'web/contact_us.html')
+    def head(self, *args, **kwargs):
+        last_applications = self.get_queryset().latest('applied_at')
+        response = HttpResponse(
+            # RFC 1123 date format.
+            headers={'Last-Modified': last_application.applied_at.strftime('%a, %d %b %Y %H:%M:%S GMT')},
+        )
+        return response
 
 def register(request):
     if request.method=="POST":
@@ -43,11 +38,10 @@ def recruit(request):
     return render(request, 'web/recruit.html', {'posting_form': forms.JobPostingForm()})
 
 def get_resume(request, jid=0):
-    print(request.user.is_superuser)
     if request.user.is_superuser:
         try:
             current_jobseeker = models.JobSeeker.objects.get(id=jid)
-            if current_jobseeker.resume:   
+            if current_jobseeker.resume:
                 filename = current_jobseeker.resume.name
                 response = HttpResponse(current_jobseeker.resume, content_type=mimetypes.guess_type(filename)[0])
                 response['Content-Length'] = current_jobseeker.resume.size
@@ -56,3 +50,4 @@ def get_resume(request, jid=0):
         except:
             pass
     return redirect('/')
+
