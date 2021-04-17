@@ -26,7 +26,7 @@ def register(request):
         if f.is_valid():
             data = f.save()
             tasks.send_custom_mail(data)
-            return render(request, 'web/submission_success.html', {'ref_id': f"HSD-JS-{5000+data.id}"})
+            return render(request, 'web/submission_success.html', {'ref_id': f"HSD-JS-{data.id}"})
     return render(request, 'web/register.html', {'job_form': forms.JobSeekerForm(), 'current_page':'register'})
 
 def recruit(request):
@@ -34,7 +34,7 @@ def recruit(request):
         f = forms.JobPostingForm(request.POST, request.FILES)
         if f.is_valid():
             data = f.save()
-            return render(request, 'web/submission_success.html', {'ref_id': f"HSD-JP-{5000+data.id}"})
+            return render(request, 'web/submission_success.html', {'ref_id': f"HSD-JP-{data.id}"})
     return render(request, 'web/recruit.html', {'posting_form': forms.JobPostingForm()})
 
 def get_resume(request, jid=0):
