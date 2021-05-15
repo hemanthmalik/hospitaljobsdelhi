@@ -1,5 +1,5 @@
 uploads/
 
 .env
-
+**/migrations/*
 *.pyc

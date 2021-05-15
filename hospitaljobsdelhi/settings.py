@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     #User created apps
     'web',
+    'users'
 ]
 
 MIDDLEWARE = [
