@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  django_gunicorn:
+    build: 
+      context: .
+    volumes:
+      - static:/static
+    env_file:
+      - .env
+    ports:
+        - 8000:8000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  nginx:
+    build: ./nginx
+    volumes:
+      - static:/static
+    ports:
+      - "80:80"
+    depends_on:
+      - django_gunicorn
+
+volumes:
+  static:
