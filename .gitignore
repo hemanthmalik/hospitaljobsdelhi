@@ -4,3 +4,4 @@ uploads/
 **/migrations/*
 *.pyc
 static/
+.env.db
