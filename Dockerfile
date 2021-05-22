@@ -1,6 +1,8 @@
-FROM python:3.8.5-alpine
+FROM python:3.8.3-slim
 
-RUN pip install --upgrade pip
+RUN apt-get update \
+    && apt-get -y install libpq-dev gcc \
+    && pip install --upgrade pip
 
 COPY ./requirements.txt .
 
